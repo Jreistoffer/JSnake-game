@@ -1,3 +1,4 @@
+
 # score.py
 import pygame  # Make sure to import pygame
 
