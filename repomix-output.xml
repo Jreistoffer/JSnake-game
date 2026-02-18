@@ -1,3 +1,84 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+JSnake-game
+JSnake-game.pub
+score.py
+Snake.py
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="JSnake-game.pub">
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDrr8CGdJ798NiN8AxzYU2S7og66GjjKwgtirx/HyAyt jrr67@uw.edu
+</file>
+
+<file path="score.py">
+# score.py
+import pygame  # Make sure to import pygame
+
+class Score:
+    def __init__(self, best=0):
+        self.points = 0
+        self.best = best
+
+    def increase(self):
+        self.points += 1
+
+    def get_score(self):
+        return self.points
+
+    def update_best(self):
+        if self.points>self.best:
+            self.best = self.points
+
+    def display(self, screen, width):
+        font = pygame.font.SysFont("comicsansms", 35)
+        score_text = font.render("Score: " + str(self.points) + (" Best: " + str(self.best)), True, (255, 255, 255))  # White color
+        screen.blit(score_text, [width / 2 - 50, 0])  # Change the position to display above the game board
+</file>
+
+<file path="Snake.py">
 import pygame
 import time
 import random
@@ -34,7 +115,7 @@ def message(msg, color):
     mesg = pygame.font.SysFont("bahnschrift", 25).render(msg, True, color)
     dis.blit(mesg, [width / 6, height / 3])
 
-def gameLoop(best_score=0):  # Creating a function for the game loop
+def gameLoop():  # Creating a function for the game loop
     game_over = False
     game_close = False
 
@@ -105,7 +186,6 @@ def gameLoop(best_score=0):  # Creating a function for the game loop
 
         for x in snake_list[:-1]:
             if x == snake_head:
-                score.update_best()
                 game_close = True
 
         our_snake(snake_block, snake_list)
@@ -125,3 +205,6 @@ def gameLoop(best_score=0):  # Creating a function for the game loop
     quit()
 
 gameLoop()
+</file>
+
+</files>
